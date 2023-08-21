@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head><title>Information</title><link rel="stylesheet" type="text/css" href="style.css"></head>
+    <body>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li><br>
+            <li><a href="about.html">About Us</a></li><br>
+            <li><a href="Information.html">More Information</a></li>
+            <li><a href="Menu.html">Menu</a></li>
+        </ul>
+    <h1>  
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive Menu</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+          }
+          .menu-container {
+            display: flex;
+            gap: 20px;
+          }
+          .cuisine-item {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+          .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          .menu-table th,
+          .menu-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ccc;
+          }
+          .menu-table img {
+            max-width: 100px;
+            max-height: 80px;
+          }
+        </style>
+        </head>
+        <body>
+        <div class="menu-container">
+          <div class="cuisine-item" onclick="showMenu('italian')">Italian</div>
+          <div class="cuisine-item" onclick="showMenu('chinese')">Chinese</div>
+          <div class="cuisine-item" onclick="showMenu('indian')">Indian</div>
+          <div class="cuisine-item" onclick="showMenu('mexican')">Mexican</div>
+          <div class="cuisine-item" onclick="showMenu('japanese')">Japanese</div>
+        </div>
+        <div id="menu-content"></div>
+        
+        <script>
+          const menus = {
+            italian: [
+              { name: "Pizza", price: "€5", image: "pizza.jpeg" },
+              { name: "Pasta", price: "€3", image: "pasta.jpeg" },
+              { name: "Risotto", price: "€7", image: "Risotto.webp" }
+            ],
+            chinese: [
+              { name: "Fried Rice", price: "€4", image: "fried rice.jpeg" },
+              { name: "Spring Rolls", price: "€4", image: "spring rolls.jpeg" },
+              { name: "Kung Pao Chicken", price: "€7", image: "kungpaochicken.jpeg" }
+            ],  
+            indian: [
+              { name: "Curry", price: "€3", image: "curry.jpeg" },
+              { name: "Naan", price: "€2", image: "naan.jpeg" },
+              { name: "Biryani", price: "€8", image: "biryani.jpeg" }
+            ],
+            mexican: [
+              { name: "Tacos", price: "€5", image: "tacos.jpeg" },
+              { name: "Burritos", price: "€7", image: "burrito.webp" },
+              { name: "Enchiladas", price: "€10", image: "enchiladas.jpeg" }
+            ],
+            japanese: [
+              { name: "Sushi", price: "€10", image: "sushi.jpeg" },
+              { name: "Tempura", price: "€7", image: "tempura.jpeg" },
+              { name: "Ramen", price: "€8", image: "ramen.jpeg" }
+            ]
+          };
+        
+          function showMenu(cuisine) {
+            const menuContent = document.getElementById("menu-content");
+            const menuItems = menus[cuisine].map(item => `
+              <tr>
+                <td><img src="${item.image}" alt="${item.name}"></td>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+              </tr>
+            `).join('');
+        
+            const menuTable = `
+              <table class="menu-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>${menuItems}</tbody>
+              </table>
+            `;
+        
+            menuContent.innerHTML = menuTable;
+          }
+        </script>
+        </body>
+        </html> 
